@@ -1,0 +1,269 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{longtable}
+
+\title{Software Requirements Specification (SRS) \\ \textbf{El Mundo Bites}}
+\author{BiteBytes Group}
+\date{9 November 2024}
+
+\begin{document}
+\maketitle
+
+\thispagestyle{empty}
+\vspace{2cm}
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{group_logo.png} % Add your logo here
+\end{center}
+
+\newpage
+\pagenumbering{Roman}
+\tableofcontents
+\newpage
+
+\section*{Revision History}
+\begin{longtable}{|c|c|c|l|}
+\hline
+\textbf{Version} & \textbf{Date}       & \textbf{Author}  & \textbf{Description} \\ \hline
+1.0              & 9 November 2024 & BiteBytes Group & document draft \\ \hline
+\end{longtable}
+
+\newpage
+\pagenumbering{arabic}
+
+\section{Introduction}
+
+\subsection{Purpose}
+The purpose of this Software Requirements Specification (SRS) document is to outline the requirements for the mobile application, \textbf{El Mundo Bites}. This app is designed to provide users with a unique cultural experience by discovering and interacting with recipes from various global cuisines. This document details functional and non-functional requirements to guide the development and testing of this application.
+
+\subsection{Scope}
+El Mundo Bites is a mobile application that allows users to:
+\begin{itemize}
+    \item Search for recipes by ingredients, cuisine type, or country.
+    \item Save favorite recipes for easy access.
+    \item Rate and review recipes.
+    \item Receive personalized recipe recommendations based on past interactions.
+\end{itemize}
+The app aims to engage food enthusiasts, students, chefs, and travelers who want to explore international cuisine in an accessible, user-friendly format.
+
+\subsection{Intended Audience}
+This document is intended for:
+\begin{itemize}
+    \item \textbf{Developers} to implement the features and functionality described.
+    \item \textbf{Project Managers} to monitor project progress and requirements.
+    \item \textbf{Testers} to validate features according to the specifications.
+    \item \textbf{End Users} to gain an understanding of the app’s intended capabilities.
+\end{itemize}
+
+\subsection{References}
+\begin{itemize}
+    \item IEEE Std 830-1998, IEEE Recommended Practice for Software Requirements Specifications
+    \item Project Proposal Document
+    \item Requirements Determination and User Interface Design materials
+\end{itemize}
+
+\newpage
+\section{Overall Description}
+
+\subsection{Product Perspective}
+El Mundo Bites offers a platform for culinary exploration by connecting users with recipes from various cultures. Unlike general recipe apps, El Mundo Bites emphasizes a cultural approach, enabling users to learn about the origins of recipes and connect with a diverse community of culinary enthusiasts.
+
+\subsection{User Classes and Characteristics}
+\begin{itemize}
+    \item \textbf{Students}: Users who seek affordable, easy-to-prepare meals.
+    \item \textbf{Professional Chefs}: Users with advanced culinary skills who provide expert reviews.
+    \item \textbf{Food Enthusiasts}: Hobbyist cooks interested in exploring and sharing recipes.
+    \item \textbf{Travelers}: Users curious about recipes associated with their travel destinations.
+\end{itemize}
+
+\subsection{Operating Environment}
+The application is designed for Android and iOS platforms and requires internet connectivity for data retrieval from external APIs. The app should work optimally on a range of screen sizes and devices, ensuring a responsive design.
+
+\subsection{Assumptions and Dependencies}
+\begin{itemize}
+    \item The app will require a stable internet connection for retrieving recipes.
+    \item Recipe data will be sourced from third-party APIs, which are assumed to be reliable and accessible.
+    \item User data will be stored securely on a cloud-based platform.
+\end{itemize}
+
+\newpage
+\section{System Features (Functional Requirements)}
+
+\subsection{Recipe Search}
+\textbf{Description:} Allows users to search for recipes based on ingredients, cuisine, or country.
+
+\textbf{Stimulus/Response Sequences:}
+\begin{itemize}
+    \item \textbf{Stimulus:} The user enters search criteria in the search bar.
+    \item \textbf{Response:} The system displays a list of recipes matching the specified criteria.
+\end{itemize}
+
+\textbf{Functional Requirements:}
+\begin{itemize}
+    \item FR-3.1.1: Provide a search bar on the main screen where users can input keywords.
+    \item FR-3.1.2: Allow search filters for cuisine type, country, and ingredients.
+    \item FR-3.1.3: Display a paginated list of results, with 20 results per page.
+\end{itemize}
+
+\subsection{Favorites Management}
+\textbf{Description:} Enables users to save and organize their favorite recipes for future access.
+
+\textbf{Stimulus/Response Sequences:}
+\begin{itemize}
+    \item \textbf{Stimulus:} The user selects the “Save” option on a recipe.
+    \item \textbf{Response:} The recipe is added to the user's favorites section.
+\end{itemize}
+
+\textbf{Functional Requirements:}
+\begin{itemize}
+    \item FR-3.2.1: Provide a “Save to Favorites” icon on each recipe.
+    \item FR-3.2.2: Display saved recipes under the “Favorites” menu.
+    \item FR-3.2.3: Allow users to remove recipes from their favorites.
+\end{itemize}
+
+\subsection{User Rating and Review System}
+\textbf{Description:} Users can leave ratings and reviews for recipes, providing feedback for other users.
+
+\textbf{Stimulus/Response Sequences:}
+\begin{itemize}
+    \item \textbf{Stimulus:} The user submits a rating and a written review.
+    \item \textbf{Response:} The system displays the user’s rating and review on the recipe page.
+\end{itemize}
+
+\textbf{Functional Requirements:}
+\begin{itemize}
+    \item FR-3.3.1: Include a 5-star rating system for each recipe.
+    \item FR-3.3.2: Allow users to submit written reviews.
+    \item FR-3.3.3: Display the average rating based on user submissions.
+\end{itemize}
+
+\subsection{Recipe Recommendation System}
+\textbf{Description:} Recommends recipes based on user activity and preferences.
+
+\textbf{Stimulus/Response Sequences:}
+\begin{itemize}
+    \item \textbf{Stimulus:} The user opens the app’s home screen.
+    \item \textbf{Response:} The system displays a list of personalized recipe recommendations.
+\end{itemize}
+
+\textbf{Functional Requirements:}
+\begin{itemize}
+    \item FR-3.4.1: Provide personalized recommendations on the home screen.
+    \item FR-3.4.2: Update recommendations based on new user data.
+\end{itemize}
+
+\subsection{Error Handling and Edge Cases}
+\textbf{Description:} Defines how the system should respond to unexpected inputs, network issues, and empty states.
+
+\textbf{Functional Requirements:}
+\begin{itemize}
+    \item \textbf{FR-3.5.1:} Display a “No Results Found” message when no recipes match the search criteria.
+    \item \textbf{FR-3.5.2:} If the network connection is lost, display a “Connection Lost” message with a “Retry” option.
+    \item \textbf{FR-3.5.3:} Validate all inputs to ensure they meet expected formats; provide specific error messages if inputs are invalid.
+\end{itemize}
+
+\newpage
+\section{External Interface Requirements}
+
+\subsection{User Interfaces}
+\begin{itemize}
+    \item \textbf{Home Screen}: Displays recipe recommendations and search functionality.
+    \item \textbf{Recipe Detail Screen}: Shows details, ratings, reviews, and the “Save” option.
+    \item \textbf{Favorites Screen}: Lists saved recipes for easy access.
+    \item \textbf{Review Screen}: Allows users to submit ratings and reviews.
+\end{itemize}
+
+\subsection{Hardware Interfaces}
+The application will be compatible with Android and iOS devices, supporting a range of screen sizes.
+
+\subsection{Software Interfaces}
+\begin{itemize}
+    \item \textbf{APIs}: Integrates with third-party recipe databases for recipe content.
+    \item \textbf{Database}: Stores user preferences, saved recipes, and profile data on cloud servers.
+\end{itemize}
+
+\subsection{Communication Interfaces}
+The app requires an active internet connection to access external APIs for recipe data retrieval.
+
+\subsection{Error Messages and Notifications}
+\paragraph{User Interfaces:}
+\begin{itemize}
+    \item Display clear error messages (“No Results Found”) in place of search results when applicable.
+    \item For critical errors (failed data retrieval), display a pop-up notification with an option to retry.
+\end{itemize}
+
+\newpage
+\section{Nonfunctional Requirements}
+
+\subsection{Performance}
+\begin{itemize}
+    \item The system shall load search results within 3 seconds on a stable internet connection.
+    \item The app shall support up to 10,000 concurrent users without performance degradation.
+\end{itemize}
+
+\subsection{Usability}
+\begin{itemize}
+    \item The app shall provide an intuitive, user-friendly interface with a minimal learning curve.
+    \item The app shall comply with accessibility standards (e.g., WCAG 2.1) for screen readers.
+\end{itemize}
+
+\subsection{Security}
+\begin{itemize}
+    \item User data shall be encrypted during both storage and transmission.
+    \item User sessions shall timeout after 24 hours of inactivity for security purposes.
+\end{itemize}
+
+\subsection{Data Security and Compliance}
+\textbf{Description:} Ensures that user data is handled in accordance with data protection standards.
+
+\textbf{Nonfunctional Requirements:}
+\begin{itemize}
+    \item \textbf{NFR-5.4.1:} Ensure compliance with data protection regulations, such as GDPR, for users within applicable regions.
+    \item \textbf{NFR-5.4.2:} Implement an option for users to request data deletion in compliance with data privacy rights.
+\end{itemize}
+
+\subsection{Scalability and Future Expansion}
+\textbf{Description:} Provides a foundation for future feature expansion, such as integrating social features or additional user recommendations.
+
+\textbf{Nonfunctional Requirements:}
+\begin{itemize}
+    \item \textbf{NFR-5.5.1:} Ensure the system architecture allows for the integration of social sharing options without major refactoring.
+    \item \textbf{NFR-5.5.2:} Allow the recommendation system to incorporate AI-based suggestions or dietary preference filters in future releases.
+\end{itemize}
+
+\newpage
+\section{Appendices}
+
+\subsection{Glossary}
+\begin{itemize}
+    \item \textbf{API}: Application Programming Interface.
+    \item \textbf{User Profile}: Stores personal settings and saved recipes for each user.
+    \item \textbf{Recipe Database}: A third-party resource for recipe information and metadata.
+\end{itemize}
+
+\subsection{Data Flow Diagrams}
+\begin{itemize}
+    \item \textbf{User Authentication Flow}: Diagrams the process for logging in and session management.
+    \item \textbf{Recipe Retrieval Flow}: Illustrates data retrieval from the recipe database to the app interface.
+\end{itemize}
+
+\subsection{Use Case Diagrams}
+\textbf{Use Case: Recipe Search}
+\begin{itemize}
+    \item \textbf{Actors:} User
+    \item \textbf{Description:} The user enters keywords in the search bar and selects search criteria (ingredients, cuisine, country).
+    \item \textbf{Preconditions:} The user is logged in, and a stable network connection is available.
+    \item \textbf{Postconditions:} A list of matching recipes is displayed, or a “No Results Found” message if no matches are found.
+\end{itemize}
+
+\subsection{Sequence Diagrams}
+\paragraph{Sequence Diagram: Saving a Recipe to Favorites}
+\begin{itemize}
+    \item \textbf{Description:} This diagram illustrates the interaction between the user interface and backend systems when a user saves a recipe.
+\end{itemize}
+
+\end{document}
